@@ -106,6 +106,8 @@ function renderTabBar() {
 function switchTab(key) {
     if (key === activeTabKey) return;
 
+    cctvContainer.scrollTop = 0;
+
     // Clear existing image srcs to terminate active network streams
     Array.from(cctvContainer.getElementsByClassName("cctvImage"))
         .forEach(img => { img.src = ""; });
