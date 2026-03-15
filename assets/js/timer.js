@@ -1,3 +1,5 @@
+/* exported initTimer, switchTimer */
+
 /**
  * Interval select element.
  * @type {HTMLSelectElement}
@@ -44,7 +46,7 @@ function initTimer(doFunction = null) {
         if (timeValue < 0) {
             clearInterval(timer);
 
-            if (doFunction && typeof doFunction === 'function') {
+            if (doFunction && typeof doFunction === "function") {
                 doFunction();
                 initTimer(doFunction);
             } else {

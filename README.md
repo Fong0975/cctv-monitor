@@ -39,3 +39,38 @@ You can also update `CCTV_LINKS` in the same file to customize the sidebar refer
 ### 2. Open in Browser
 
 Open `index.html` directly in your browser — no web server needed.
+
+## Development
+
+### Requirements
+
+- [Node.js](https://nodejs.org/) v18 or later
+
+### Setup
+
+Install dev dependencies:
+
+```bash
+npm install
+```
+
+### Linting
+
+This project uses [ESLint](https://eslint.org/) for JavaScript and [HTMLHint](https://htmlhint.com/) for HTML. Run both checks before committing:
+
+```bash
+npm run lint
+```
+
+Run each linter individually if needed:
+
+```bash
+npm run lint:js   # JavaScript only
+npm run lint:html # HTML only
+```
+
+ESLint supports auto-fixing style issues (indentation, quotes, semicolons, etc.). HTMLHint is report-only and does not support auto-fix.
+
+```bash
+npm run lint:fix  # Auto-fix JavaScript issues where possible
+```

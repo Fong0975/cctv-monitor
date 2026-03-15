@@ -1,0 +1,12 @@
+{
+    "doctype-first": true,
+    "doctype-html5": true,
+    "attr-lowercase": true,
+    "attr-value-double-quotes": true,
+    "tag-pair": true,
+    "tag-self-close": false,
+    "id-unique": true,
+    "src-not-empty": true,
+    "alt-require": true,
+    "space-tab-mixed-disabled": "space"
+}
