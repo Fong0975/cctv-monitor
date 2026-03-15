@@ -1,3 +1,5 @@
+/* exported initialCCTV, showModal */
+
 /**
  * Parent div of all CCTV blocks.
  * @type {HTMLElement}
@@ -194,7 +196,7 @@ function createCCTVDiv(count) {
  * @returns {void}
  */
 function refreshCCTV() {
-    var cctvModal = document.getElementById('cctvModal');
+    var cctvModal = document.getElementById("cctvModal");
     var isModalShow = cctvModal.classList.contains("show");
 
     if (isModalShow) {
@@ -259,8 +261,8 @@ function refreshCCTVBlocks() {
  * @returns {void}
  */
 function refreshCCTVModal() {
-    var cctvModal = document.getElementById('cctvModal');
-    var imgDiv = cctvModal.querySelector('.imgContainer');
+    var cctvModal = document.getElementById("cctvModal");
+    var imgDiv = cctvModal.querySelector(".imgContainer");
     var link = imgDiv.getAttribute("data-link");
     var needRefresh = imgDiv.getAttribute("data-needRefresh");
 
