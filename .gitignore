@@ -1,0 +1,8 @@
+# Claude
+.claude/
+
+# VSCode
+.vscode/
+
+# Data
+data/data.js

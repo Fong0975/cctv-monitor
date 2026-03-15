@@ -1,0 +1,211 @@
+body {
+    margin: 0px;
+    overflow: hidden;
+    height: 100vh;
+}
+
+/* Position */
+.fix-top-right {
+    position: fixed;
+    right: 40px;
+    top: 20px;
+    z-index: 1000;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+/* Button */
+.btn-circle {
+    width: 30px;
+    height: 30px;
+    text-align: center;
+    padding: 6px 0;
+    font-size: 12px;
+    line-height: 1.428571429;
+    border-radius: 15px;
+}
+
+.btn-circle.btn-lg {
+    width: 50px;
+    height: 50px;
+    font-size: 18px;
+    line-height: 1.33;
+    border-radius: 25px;
+}
+
+.btn-circle.btn-xl {
+    width: 70px;
+    height: 70px;
+    font-size: 24px;
+    line-height: 1.33;
+    border-radius: 35px;
+}
+
+.btn-halo {
+    box-shadow: 0 0 4px #DFDFDF;
+}
+
+.btn-transparent {
+    background: none;
+    border: none;
+}
+
+/* Tab bar */
+#cctvTabBar {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 40px;
+    z-index: 999;
+    display: flex;
+    background-color: #1a1a1a;
+    overflow-x: auto;
+    overflow-y: hidden;
+    scrollbar-width: none;
+}
+
+#cctvTabBar::-webkit-scrollbar {
+    display: none;
+}
+
+.tab-btn {
+    flex-shrink: 0;
+    padding: 0 24px;
+    height: 100%;
+    background: none;
+    border: none;
+    border-bottom: 3px solid transparent;
+    color: #aaa;
+    font-size: 14px;
+    cursor: pointer;
+    white-space: nowrap;
+    transition: color 0.15s, border-color 0.15s;
+}
+
+.tab-btn:hover:not(.active) {
+    color: #ddd;
+    background-color: rgba(255, 255, 255, 0.05);
+}
+
+.tab-btn.active {
+    color: #fff;
+    border-bottom-color: #0d6efd;
+}
+
+/* Elements */
+#cctvContainer {
+    padding: 0px;
+    margin-top: 40px;
+    width: 100vw;
+    height: calc(100vh - 40px);
+    overflow-x: hidden !important;
+    overflow-y: auto;
+    margin-left: 0px;
+    margin-right: 0px;
+}
+
+.cctvCol {
+    min-height: calc(50vh - 20px);
+    max-height: calc(50vh - 20px);
+    display: flex;
+    position: relative;
+    padding: 0px;
+    background-position: center;
+}
+
+.cctvCol img {
+    width: 100%;
+}
+
+.cctvCol .cctvNumber {
+    position: absolute;
+    top: 0;
+    left: 0;
+    padding: 10px 15px;
+    background-color: #FFF;
+    opacity: .9;
+}
+
+.cctvCol .cctvTitle {
+    position: absolute;
+    right: 0;
+    bottom: 0;
+    padding: 5px 10px;
+    font-size: 10pt;
+    background-color: #FFF;
+    opacity: .6;
+    cursor: pointer;
+}
+
+.counter {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.modal:not(.show) {
+    display: none !important;
+}
+
+.modal-full {
+    width: 85vw;
+    max-width: 85vw;
+    height: 80vh;
+}
+
+.modal-full .modal-content {
+    height: 100%;
+}
+
+.modal-body {
+    overflow: auto;
+}
+
+.modal-body .imgContainer {
+    width: 100%;
+    height: 100%;
+    max-width: 100%;
+    max-height: 100%;
+    background-image: url('../images/noSignal.svg');
+    background-repeat: no-repeat;
+    background-position: center;
+    background-size: cover;
+    min-width: 880px;
+    min-height: 590px;
+}
+
+@media screen and (max-width: 991px) {
+    .fix-top-right {
+        position: fixed;
+        right: 15px;
+        top: 0px;
+    }
+
+    .cctvCol.cctvColEmpty {
+        display: none;
+    }
+
+    .modal-full {
+        width: 95vw;
+        max-width: 95vw;
+    }
+}
+
+@media screen and (max-width: 575px) {
+    .modal {
+        display: flex !important;
+        justify-content: center !important;
+    }
+}
+
+ul.links li {
+    list-style-type: thumbs;
+}
+
+@counter-style thumbs {
+    system: cyclic;
+    symbols: "🔗";
+    suffix: " ";
+}

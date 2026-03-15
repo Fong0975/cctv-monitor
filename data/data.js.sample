@@ -1,0 +1,129 @@
+/**
+ * CCTV camera feed definitions, grouped by location.
+ * Each map entry will appear as a labelled section in the Settings sidebar.
+ *
+ * Structure: Map<string, object[]>
+ *   key      {string}  Group label (place name).
+ *   value    {Array}   Array of camera entries for that group, in display order.
+ *
+ * Camera entry fields:
+ *   title    {string}  Display name shown on the feed tile and modal.
+ *   url      {string}  Image URL (static JPEG or MJPEG stream).
+ *   refresh  {boolean} true = append cache-busting timestamp on every timer tick.
+ */
+const CCTV_RESOURCES = new Map([
+    ["台北", [
+        {
+            "title": "國三南23.33k-圓山交流道",
+            "url": "https://cctvn.freeway.gov.tw/abs2mjpg/bmjpg?camera=12330",
+            "refresh": true
+        },
+        {
+            "title": "國三北23.92k-圓山路段",
+            "url": "https://cctvn.freeway.gov.tw/abs2mjpg/bmjpg?camera=12390",
+            "refresh": true
+        },
+        {
+            "title": "國三北24.90k-台北交流道",
+            "url": "https://cctvn.freeway.gov.tw/abs2mjpg/bmjpg?camera=12490",
+            "refresh": true
+        },
+        {
+            "title": "國三南25.06k-圓山交流道",
+            "url": "https://cctvn.freeway.gov.tw/abs2mjpg/bmjpg?camera=12500",
+            "refresh": true
+        }
+    ]],
+    ["台中", [
+        {
+            "title": "國三南173.38k-清水路段",
+            "url": "https://cctvc.freeway.gov.tw/abs2mjpg/bmjpg?camera=262",
+            "refresh": true
+        },
+        {
+            "title": "國三南175.94k-沙鹿交流道",
+            "url": "https://cctvc.freeway.gov.tw/abs2mjpg/bmjpg?camera=263",
+            "refresh": true
+        },
+        {
+            "title": "國三北178.09k-沙鹿路段",
+            "url": "https://cctvc.freeway.gov.tw/abs2mjpg/bmjpg?camera=694",
+            "refresh": true
+        },
+        {
+            "title": "國三北183.94k-龍井路段",
+            "url": "https://cctvc.freeway.gov.tw/abs2mjpg/bmjpg?camera=501",
+            "refresh": true
+        }
+    ]],
+    ["台南", [
+        {
+            "title": "國三北312.73k-白河交流道",
+            "url": "https://cctvs.freeway.gov.tw/live-view/mjpg/video.cgi?camera=1028",
+            "refresh": true
+        },
+        {
+            "title": "國三南319.84k-東山服務區",
+            "url": "https://cctvs.freeway.gov.tw/live-view/mjpg/video.cgi?camera=223",
+            "refresh": true
+        },
+        {
+            "title": "國三南323.05k-柳營交流道",
+            "url": "https://cctvs.freeway.gov.tw/live-view/mjpg/video.cgi?camera=1071",
+            "refresh": true
+        },
+        {
+            "title": "國三北330.76k-烏山頭路段",
+            "url": "https://cctvs.freeway.gov.tw/live-view/mjpg/video.cgi?camera=1033",
+            "refresh": true
+        }
+    ]],
+    ["高雄", [
+        {
+            "title": "國一北351.99k-岡山路段",
+            "url": "https://cctvs.freeway.gov.tw/live-view/mjpg/video.cgi?camera=101",
+            "refresh": true
+        },
+        {
+            "title": "國一南358.27k-楠梓路段",
+            "url": "https://cctvs.freeway.gov.tw/live-view/mjpg/video.cgi?camera=3061",
+            "refresh": true
+        },
+        {
+            "title": "國一南362.5k-鼎金系統交流道",
+            "url": "https://cctvs.freeway.gov.tw/live-view/mjpg/video.cgi?camera=334",
+            "refresh": true
+        },
+        {
+            "title": "國一北367.95k-高雄中正路出口",
+            "url": "https://cctvs.freeway.gov.tw/live-view/mjpg/video.cgi?camera=134",
+            "refresh": true
+        }
+    ]]
+]);
+
+/**
+ * External reference links shown in the Settings sidebar.
+ *
+ * Fields:
+ *   url   {string} Destination URL (opens in a new tab).
+ *   title {string} Link label text.
+ */
+const CCTV_LINKS = [
+    {
+        "url": "https://1968.freeway.gov.tw/roadcctv",
+        "title": "高速公路1968 - 即時影像"
+    },
+    {
+        "url": "https://1968.freeway.gov.tw/roadinfo?freeway=3&expressway=0&from_mile=54400&end_mile=62700&direction=3",
+        "title": "高速公路1968 - 路段資訊"
+    },
+    {
+        "url": "https://1968.freeway.gov.tw/",
+        "title": "高速公路1968 - 路網圖"
+    },
+    {
+        "url": "https://www.freeway.gov.tw/Road.aspx",
+        "title": "交通部高速公路局 - 道路封閉資訊"
+    }
+];

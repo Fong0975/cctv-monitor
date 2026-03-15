@@ -1,0 +1,131 @@
+<!DOCTYPE html>
+<html lang="zh-TW">
+
+<head>
+    <meta charset="UTF-8" />
+    <title>CCTV Monitor</title>
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+    <meta name="viewport" content="width=device-width">
+    <meta name="robots" content="noindex">
+    <!-- Icon -->
+    <link href="favicon.ico" rel="shortcut icon" type="image/ico" />
+    <link rel="apple-touch-icon" href="touch-icon-iphone.png" />
+    <link rel="apple-touch-icon" sizes="120x120" href="touch-icon-iphone-retina.png" />
+
+    <!-- CSS: Bootstrap -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet">
+    <!-- CSS: Font Awesome -->
+    <link href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@6.7.2/css/all.min.css" rel="stylesheet">
+    <!-- CSS: SweetAlert2 -->
+    <link href="https://cdn.jsdelivr.net/npm/sweetalert2@11/dist/sweetalert2.min.css" rel="stylesheet">
+    <!-- CSS: App -->
+    <link href="assets/css/style.css" rel="stylesheet">
+
+    <!-- JS: Bootstrap -->
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
+    <!-- JS: SweetAlert2 -->
+    <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11/dist/sweetalert2.all.min.js"></script>
+    <!-- JS: App utilities -->
+    <script src="assets/js/utilities.js"></script>
+</head>
+
+<body>
+    <div class="fix-top-right">
+        <div class="btn-circle btn-lg btn-halo text-light bg-dark my-2 counter">
+            <span id="counterNumber">5s</span>
+        </div>
+
+        <button type="button" class="btn btn-secondary btn-circle btn-lg btn-halo my-2"
+            data-bs-toggle="offcanvas" data-bs-target="#settingSidebar" aria-controls="settingSidebar">
+            <i class="fa-solid fa-gears"></i>
+        </button>
+
+        <button type="button" class="btn btn-secondary btn-circle btn-lg btn-halo my-2"
+            onclick="showModal();">
+            <i class="fa-solid fa-link"></i>
+        </button>
+
+        <div class="offcanvas offcanvas-end" tabindex="-1" id="settingSidebar"
+            aria-labelledby="settingSidebarLabel">
+            <div class="offcanvas-header">
+                <h4 class="offcanvas-title fw-bold" id="settingSidebarLabel">Settings</h4>
+                <button type="button" class="btn-close text-reset" data-bs-dismiss="offcanvas"
+                    aria-label="Close"></button>
+            </div>
+
+            <div class="offcanvas-body">
+                <div class="mb-3">
+                    <label class="form-label">Counter</label>
+                    <div class="input-group mb-2 ps-4">
+                        <span class="input-group-text">Time</span>
+                        <select class="form-select" id="counterInterval" onchange="switchTimer();">
+                            <option value="1">1s</option>
+                            <option value="3">3s</option>
+                            <option value="5" selected>5s</option>
+                            <option value="10">10s</option>
+                        </select>
+                    </div>
+                    <div class="input-group mb-3 ps-4">
+                        <div class="input-group-text">
+                            <input class="form-check-input mt-0" type="checkbox" id="counterEnable"
+                                value="1" onchange="switchTimer();" checked>
+                        </div>
+                        <input type="text" class="form-control bg-white" value="Enable countdown timer"
+                            disabled>
+                    </div>
+                </div>
+
+                <div class="mt-5 mb-3">
+                    <label class="form-label">Links</label>
+                    <div>
+                        <ul class="links" id="cctvLinksContainer"></ul>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div id="cctvTabBar"></div>
+
+    <div id="cctvContainer" class="row bg-dark"></div>
+
+    <div class="modal fade" id="cctvModal" tabindex="-1" data-bs-backdrop="static" data-bs-keyboard="false"
+        aria-labelledby="cctvModalLabel" aria-hidden="true">
+        <div class="modal-dialog modal-full modal-dialog-centered">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title" id="cctvModalLabel">Modal title</h5>
+                    <button type="button" class="btn-close" data-bs-dismiss="modal"
+                        aria-label="Close"></button>
+                </div>
+                <div class="modal-body">
+                    <div class="imgContainer"></div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script src="data/data.js"></script>
+    <script src="assets/js/timer.js"></script>
+    <script src="assets/js/cctv.js"></script>
+    <script>
+        document.getElementById('cctvModal').addEventListener('show.bs.modal', function (event) {
+            var button = event.relatedTarget;
+            var title = button.getAttribute('data-bs-title');
+            var link = button.getAttribute('data-bs-link');
+            var needRefresh = button.getAttribute('data-bs-needRefresh');
+
+            cctvModal.querySelector('.modal-title').textContent = title;
+            var imgContainer = cctvModal.querySelector('.imgContainer');
+            imgContainer.style.backgroundImage = "url('" + link + "')";
+            imgContainer.setAttribute('data-link', link);
+            imgContainer.setAttribute('data-needRefresh', needRefresh);
+        });
+
+        window.addEventListener('load', function () {
+            initialCCTV();
+        });
+    </script>
+</body>
+
+</html>
