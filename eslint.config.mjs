@@ -9,6 +9,7 @@ const sharedGlobals = {
     // CDN globals
     Swal: "readonly",
     bootstrap: "readonly",
+    Hls: "readonly",
     // Shared utility globals (defined in utilities.js)
     showToast: "readonly",
     SWEETALERT_TYPE: "readonly",

@@ -8,8 +8,13 @@
  *
  * Camera entry fields:
  *   title    {string}  Display name shown on the feed tile and modal.
- *   url      {string}  Image URL (static JPEG or MJPEG stream).
+ *   url      {string}  Static JPEG/MJPEG image URL, or an HLS (.m3u8) manifest URL.
+ *   type     {string}  Optional. "image" (default) or "hls". "hls" sources are
+ *                       played through a <video> element via hls.js instead of
+ *                       being rendered as an <img>. If omitted, a URL ending in
+ *                       `.m3u8` is auto-detected as "hls".
  *   refresh  {boolean} true = append cache-busting timestamp on every timer tick.
+ *                       Ignored for "hls" sources, which refresh themselves.
  */
 const CCTV_RESOURCES = new Map([
     ["台北", [
@@ -79,6 +84,12 @@ const CCTV_RESOURCES = new Map([
         }
     ]],
     ["高雄", [
+        {
+            "title": "HLS 範例 (.m3u8)",
+            "url": "https://test-streams.mux.dev/x36xhzz/x36xhzz.m3u8",
+            "type": "hls",
+            "refresh": false
+        },
         {
             "title": "國一北351.99k-岡山路段",
             "url": "https://cctvs.freeway.gov.tw/live-view/mjpg/video.cgi?camera=101",
