@@ -115,7 +115,12 @@ body {
     background-position: center;
 }
 
-.cctvCol img {
+.cctvCol.cctvColVideo {
+    background-color: #000;
+}
+
+.cctvCol img,
+.cctvCol video {
     width: 100%;
 }
 
@@ -174,6 +179,23 @@ body {
     background-size: cover;
     min-width: 880px;
     min-height: 590px;
+}
+
+.modal-body .imgContainer video {
+    display: none;
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    background-color: #000;
+}
+
+.modal-body .imgContainer.type-hls {
+    background-image: none;
+    background-color: #000;
+}
+
+.modal-body .imgContainer.type-hls video {
+    display: block;
 }
 
 @media screen and (max-width: 991px) {

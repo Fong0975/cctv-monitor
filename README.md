@@ -25,14 +25,21 @@ const CCTV_RESOURCES = new Map([
             "title": "Camera Label",
             "url": "https://example.com/camera-feed.jpg",
             "refresh": true
+        },
+        {
+            "title": "HLS Camera Label",
+            "url": "https://example.com/camera-feed.m3u8",
+            "type": "hls",
+            "refresh": false
         }
     ]]
 ]);
 ```
 
 - **`title`** — Display name shown on the feed tile and modal header.
-- **`url`** — Image URL of the camera feed (static JPEG or MJPEG stream).
-- **`refresh`** — Set to `true` to append a cache-busting timestamp on every timer tick.
+- **`url`** — Image URL of the camera feed (static JPEG or MJPEG stream), or an HLS (`.m3u8`) manifest URL.
+- **`type`** — Optional. `"image"` (default) or `"hls"`. HLS sources are played through [hls.js](https://github.com/video-dev/hls.js) in a `<video>` element instead of an `<img>`. If omitted, a URL ending in `.m3u8` is auto-detected as `"hls"`.
+- **`refresh`** — Set to `true` to append a cache-busting timestamp on every timer tick. Ignored for `"hls"` sources, which refresh themselves as a live stream.
 
 You can also update `CCTV_LINKS` in the same file to customize the sidebar reference links.
 
